@@ -6,7 +6,7 @@
     <title>Fotografías Jocker | Captura tus momentos</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
-   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <style>
         * {
             margin: 0;
@@ -20,7 +20,6 @@
             --primary-light: #f28482;
             --dark-bg: #0a0a0a;
             --light-text: #f1faee;
-            --accent-color: #a8dadc;
             --transparent-dark: rgba(10, 10, 10, 0.92);
             --transparent-light: rgba(255, 255, 255, 0.08);
         }
@@ -38,12 +37,11 @@
             font-weight: 700;
         }
 
-        /* Smooth scrolling */
         html {
             scroll-behavior: smooth;
         }
 
-        /* Header transparente */
+        /* Header */
         .header {
             position: fixed;
             top: 0;
@@ -54,7 +52,6 @@
             z-index: 1000;
             padding: 20px 0;
             transition: all 0.4s ease;
-            border-bottom: 2px solid transparent;
         }
 
         .header.scrolled {
@@ -74,16 +71,6 @@
             padding: 0 30px;
         }
 
-        .logo {
-            font-size: 28px;
-            font-weight: 800;
-            color: var(--light-text);
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            transition: all 0.3s ease;
-        }
-
         .logo img {
             height: 90px;
             transition: all 0.3s ease;
@@ -93,7 +80,7 @@
             transform: scale(1.05);
         }
 
-        /* Menú hamburguesa mejorado */
+        /* Menú hamburguesa */
         .hamburger-menu {
             display: flex;
             flex-direction: column;
@@ -128,7 +115,6 @@
 
         .hamburger-menu.active .hamburger-line:nth-child(1) {
             transform: rotate(45deg) translate(5px, 5px);
-            background: var(--light-text);
         }
 
         .hamburger-menu.active .hamburger-line:nth-child(2) {
@@ -137,10 +123,9 @@
 
         .hamburger-menu.active .hamburger-line:nth-child(3) {
             transform: rotate(-45deg) translate(5px, -5px);
-            background: var(--light-text);
         }
 
-        /* Menú desplegable moderno */
+        /* Menú desplegable */
         .dropdown-menu {
             position: fixed;
             top: 0;
@@ -198,30 +183,6 @@
         .dropdown-menu a:hover {
             color: var(--light-text);
             padding-left: 30px;
-        }
-
-        .close-menu {
-            position: absolute;
-            top: 25px;
-            right: 25px;
-            background: none;
-            border: none;
-            color: var(--light-text);
-            font-size: 28px;
-            cursor: pointer;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            transition: all 0.3s ease;
-            z-index: 1002;
-        }
-
-        .close-menu:hover {
-            color: var(--primary-color);
-            transform: rotate(90deg);
         }
 
         /* Secciones */
@@ -320,43 +281,6 @@
             opacity: 0.9;
         }
 
-        .cta-button {
-            display: inline-block;
-            padding: 15px 40px;
-            background: transparent;
-            color: var(--light-text);
-            border: 2px solid var(--primary-color);
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 18px;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .cta-button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: var(--primary-color);
-            transition: left 0.4s ease;
-            z-index: -1;
-        }
-
-        .cta-button:hover::before {
-            left: 0;
-        }
-
-        .cta-button:hover {
-            color: var(--light-text);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(230, 57, 70, 0.3);
-        }
-
         /* Indicadores del carrusel */
         .carousel-indicators {
             position: absolute;
@@ -376,7 +300,6 @@
             background: transparent;
             cursor: pointer;
             transition: all 0.4s ease;
-            position: relative;
         }
 
         .indicator.active {
@@ -388,7 +311,6 @@
         /* Portfolio Section */
         #portfolio {
             background: linear-gradient(135deg, #000, #0a0000, #000);
-            position: relative;
         }
 
         .portfolio-content {
@@ -420,22 +342,93 @@
             transform: scale(1.05);
         }
 
-        /* Retratos Section */
-        #retratos {
-            background-color: var(--dark-bg);
-        }
-
-        .retratos-gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-        }
-
-        /* Blog Section */
-        #precios {
+        /* Gallery Section */
+        .gallery-section {
+            padding: 120px 0;
             background: linear-gradient(135deg, #000, #0a0000, #000);
         }
 
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .category-item {
+            height: 380px;
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .category-item:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 50px rgba(230, 57, 70, 0.3);
+        }
+
+        .category-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.4s ease;
+        }
+
+        .category-item:hover img {
+            transform: scale(1.1);
+            filter: brightness(0.7);
+        }
+
+        .category-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.1) 0%, rgba(230, 57, 70, 0.8) 100%);
+            opacity: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.4s ease;
+        }
+
+        .category-item:hover .category-overlay {
+            opacity: 1;
+        }
+
+        .category-info {
+            text-align: center;
+            color: white;
+            transform: translateY(20px);
+            transition: all 0.4s ease;
+        }
+
+        .category-item:hover .category-info {
+            transform: translateY(0);
+        }
+
+        .category-info h3 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .category-info p {
+            font-size: 1rem;
+            margin-bottom: 15px;
+            opacity: 0.9;
+        }
+
+        .category-info i {
+            font-size: 2rem;
+            animation: pulse 2s infinite;
+        }
+
+        /* FAQ */
         .faq-container {
             max-width: 800px;
             margin: 0 auto;
@@ -468,70 +461,7 @@
             display: block;
         }
 
-        .packs-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 60px;
-        }
-
-        .pack-card {
-            background: var(--transparent-dark);
-            border-radius: 10px;
-            padding: 30px;
-            text-align: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .pack-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-        }
-
-        .pack-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background: var(--primary-color);
-        }
-
-        .pack-title {
-            font-size: 1.8rem;
-            margin-bottom: 15px;
-            color: var(--primary-color);
-        }
-
-        .pack-price {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 20px;
-        }
-
-        .pack-features {
-            list-style: none;
-            margin-bottom: 25px;
-        }
-
-        .pack-features li {
-            margin-bottom: 10px;
-            padding-left: 20px;
-            position: relative;
-        }
-
-        .pack-features li::before {
-            content: '✓';
-            position: absolute;
-            left: 0;
-            color: var(--primary-color);
-        }
-
-        /* Sobre Nosotros Section */
+        /* Sobre Nosotros */
         #sobre-nosotros {
             background-color: var(--dark-bg);
         }
@@ -560,43 +490,17 @@
             line-height: 1.8;
         }
 
-        /* Contacto Section */
+        /* Contacto */
         #contacto {
             background: linear-gradient(135deg, #000, #0a0000, #000);
-        }
-
-        .contact-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-        }
-
-        .contact-info {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .contact-icon {
-            width: 40px;
-            height: 40px;
-            background: var(--primary-color);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
         }
 
         .contact-form {
             background: var(--transparent-dark);
             padding: 30px;
             border-radius: 10px;
+            max-width: 600px;
+            margin: 0 auto;
         }
 
         .form-group {
@@ -610,27 +514,21 @@
         }
 
         .form-control {
-    width: 100%;
-    padding: 12px 15px;
-    background: #000; /* Fondo negro */
-    border: 1px solid var(--primary-color); /* Borde rojo */
-    border-radius: 5px;
-    color: var(--primary-color); /* Texto rojo */
-    font-family: 'Montserrat', sans-serif;
-}
+            width: 100%;
+            padding: 12px 15px;
+            background: #000;
+            border: 1px solid var(--primary-color);
+            border-radius: 5px;
+            color: var(--primary-color);
+            font-family: 'Montserrat', sans-serif;
+        }
 
-.form-control:focus {
-    outline: none;
-    border-color: var(--primary-light);
-    box-shadow: 0 0 0 2px rgba(230, 57, 70, 0.3);
-}
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-light);
+            box-shadow: 0 0 0 2px rgba(230, 57, 70, 0.3);
+        }
 
-/* Estilo específico para el select */
-.form-control option {
-    background: #000;
-    color: var(--primary-color);
-    padding: 10px;
-}
         textarea.form-control {
             min-height: 120px;
             resize: vertical;
@@ -653,112 +551,10 @@
             box-shadow: 0 10px 20px rgba(230, 57, 70, 0.3);
         }
 
-        /* Gallery Section */
-        .gallery-section {
-            padding: 120px 0;
-            background: linear-gradient(135deg, #000, #0a0000, #000);
-            position: relative;
-        }
-
-        .photo-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .photo-item {
-            height: 280px;
-            background: var(--transparent-light);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .photo-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: all 0.6s ease;
-        }
-
-        .photo-item::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(230, 57, 70, 0.2), transparent);
-            transition: left 0.8s ease;
-            z-index: 2;
-        }
-
-        .photo-item:hover::before {
-            left: 100%;
-        }
-
-        .photo-item:hover img {
-            transform: scale(1.1);
-        }
-
-        .photo-item:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(230, 57, 70, 0.2);
-        }
-
-        /* Modal para imágenes */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 2000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
-            overflow: auto;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .modal-content {
-            display: block;
-            max-width: 90%;
-            max-height: 80%;
-            margin: auto;
-            animation: zoom 0.6s;
-        }
-
-        @keyframes zoom {
-            from {transform: scale(0)}
-            to {transform: scale(1)}
-        }
-
-        .close-modal {
-            position: absolute;
-            top: 15px;
-            right: 35px;
-            color: #f1f1f1;
-            font-size: 40px;
-            font-weight: bold;
-            transition: 0.3s;
-            cursor: pointer;
-        }
-
-        .close-modal:hover {
-            color: var(--primary-color);
-        }
-
-        /* Footer Styles */
+        /* Footer */
         .footer {
             background: linear-gradient(to top, #0a0000, #000);
             padding: 80px 0 30px;
-            position: relative;
             border-top: 1px solid rgba(230, 57, 70, 0.2);
         }
 
@@ -839,8 +635,7 @@
         /* Responsive */
         @media (max-width: 992px) {
             .portfolio-content,
-            .about-container,
-            .contact-container {
+            .about-container {
                 grid-template-columns: 1fr;
             }
             
@@ -869,11 +664,6 @@
 
             .photo-grid {
                 grid-template-columns: 1fr;
-                gap: 30px;
-            }
-
-            .photo-item {
-                height: 220px;
             }
 
             .footer-content {
@@ -894,424 +684,6 @@
                 width: 100%;
             }
         }
-        
-#historia {
-  border-right: 2px solid black;
-  white-space: pre-line; /* respeta saltos de línea */
-}
-
-.category-item {
-    height: 380px;
-    border-radius: 15px;
-    overflow: hidden;
-    position: relative;
-    cursor: pointer;
-    transition: all 0.4s ease;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-}
-
-.category-item:hover {
-    transform: translateY(-10px) scale(1.02);
-    box-shadow: 0 20px 50px rgba(230, 57, 70, 0.3);
-}
-
-.category-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: all 0.4s ease;
-}
-
-.category-item:hover img {
-    transform: scale(1.1);
-    filter: brightness(0.7);
-}
-
-.category-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(135deg, rgba(0, 0, 0, 0.1) 0%, rgba(230, 57, 70, 0.8) 100%);
-    opacity: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.4s ease;
-}
-
-.category-item:hover .category-overlay {
-    opacity: 1;
-}
-
-.category-info {
-    text-align: center;
-    color: white;
-    transform: translateY(20px);
-    transition: all 0.4s ease;
-}
-
-.category-item:hover .category-info {
-    transform: translateY(0);
-}
-
-.category-info h3 {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.8rem;
-    font-weight: 700;
-    margin-bottom: 10px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-}
-
-.category-info p {
-    font-size: 1rem;
-    margin-bottom: 15px;
-    opacity: 0.9;
-}
-
-.category-info i {
-    font-size: 2rem;
-    animation: pulse 2s infinite;
-}
-
-/* Modal de categoría */
-.category-modal {
-    display: none;
-    position: fixed;
-    z-index: 2000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.95);
-    backdrop-filter: blur(10px);
-    animation: modalFadeIn 0.3s ease;
-}
-
-.modal-content-gallery {
-    position: relative;
-    margin: 2% auto;
-    width: 95%;
-    max-width: 1400px;
-    height: 90vh;
-    background: rgba(10, 10, 10, 0.9);
-    border-radius: 20px;
-    border: 2px solid var(--primary-color);
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-}
-
-.modal-header {
-    padding: 30px;
-    background: linear-gradient(135deg, rgba(230, 57, 70, 0.1), rgba(0, 0, 0, 0.3));
-    border-bottom: 2px solid var(--primary-color);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.modal-header h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: 2.5rem;
-    color: var(--primary-color);
-    margin: 0;
-}
-
-.modal-close {
-    color: white;
-    font-size: 3rem;
-    font-weight: bold;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    line-height: 1;
-}
-
-.modal-close:hover {
-    color: var(--primary-color);
-    transform: scale(1.2) rotate(90deg);
-}
-
-.modal-gallery-grid {
-    flex: 1;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
-    padding: 30px;
-    overflow-y: auto;
-}
-
-.modal-photo-item {
-    height: 250px;
-    pointer-events: none;
-    border-radius: 10px;
-    overflow: hidden;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    border: 2px solid transparent;
-}
-
-.modal-photo-item:hover {
-    transform: scale(1.05);
-    border-color: var(--primary-color);
-    box-shadow: 0 10px 30px rgba(230, 57, 70, 0.3);
-}
-
-.modal-photo-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: all 0.3s ease;
-}
-
-.modal-photo-item:hover img {
-    transform: scale(1.1);
-}
-
-/* Modal para foto individual */
-.photo-modal {
-    display: none;
-    position: fixed;
-    z-index: 3000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.95);
-    backdrop-filter: blur(15px);
-}
-
-.photo-modal-content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    max-width: 90%;
-    max-height: 90%;
-    text-align: center;
-}
-
-.photo-modal-content img {
-    max-width: 100%;
-    max-height: 80vh;
-    border-radius: 10px;
-    box-shadow: 0 20px 60px rgba(230, 57, 70, 0.3);
-}
-
-.photo-modal-close {
-    position: absolute;
-    top: 20px;
-    right: 30px;
-    color: var(--light-text);
-    font-size: 40px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.photo-modal-close:hover {
-    color: var(--primary-color);
-    transform: scale(1.2);
-}
-
-.photo-nav {
-    position: absolute;
-    top: 50%;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    padding: 0 30px;
-    transform: translateY(-50%);
-    pointer-events: none;
-}
-
-.nav-btn {
-    background: rgba(0, 0, 0, 0.4);
-    backdrop-filter: blur(10px);
-    color: rgba(255, 255, 255, 0.8);
-    border: 1px solid rgba(230, 57, 70, 0.3);
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    font-size: 0;
-    cursor: pointer;
-    transition: all 0.4s ease;
-    position: relative;
-    pointer-events: all;
-    overflow: hidden;
-}
-
-.nav-btn::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 12px;
-    height: 12px;
-    border-top: 2px solid currentColor;
-    border-right: 2px solid currentColor;
-    transition: all 0.3s ease;
-}
-
-.nav-btn:first-child::before {
-    transform: translate(-30%, -50%) rotate(-135deg);
-}
-
-.nav-btn:last-child::before {
-    transform: translate(-70%, -50%) rotate(45deg);
-}
-
-.nav-btn:hover {
-    background: rgba(230, 57, 70, 0.2);
-    border-color: var(--primary-color);
-    color: var(--primary-color);
-    transform: scale(1.1);
-    box-shadow: 0 0 20px rgba(230, 57, 70, 0.3);
-}
-
-.nav-btn:hover::before {
-    transform: translate(-50%, -50%) rotate(-135deg) scale(1.2);
-}
-
-.nav-btn:last-child:hover::before {
-    transform: translate(-50%, -50%) rotate(45deg) scale(1.2);
-}
-
-.nav-btn:active {
-    transform: scale(0.95);
-}
-
-/* Modal de éxito personalizado */
-.success-modal {
-    display: none;
-    position: fixed;
-    z-index: 3500;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
-    backdrop-filter: blur(10px);
-}
-
-.success-content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: linear-gradient(135deg, var(--dark-bg), rgba(230, 57, 70, 0.1));
-    padding: 50px;
-    border-radius: 20px;
-    text-align: center;
-    border: 2px solid var(--primary-color);
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-    animation: successBounce 0.6s ease;
-}
-
-.success-icon {
-    font-size: 4rem;
-    color: #00ff00;
-    margin-bottom: 20px;
-    animation: checkPulse 1s ease-in-out;
-}
-
-.success-content h3 {
-    font-size: 2rem;
-    color: var(--primary-color);
-    margin-bottom: 15px;
-}
-
-.success-content p {
-    font-size: 1.2rem;
-    color: var(--light-text);
-    margin-bottom: 30px;
-}
-
-.success-btn {
-    background: var(--primary-color);
-    color: white;
-    border: none;
-    padding: 12px 30px;
-    border-radius: 25px;
-    font-size: 16px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.success-btn:hover {
-    background: var(--primary-dark);
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(230, 57, 70, 0.4);
-}
-
-/* Animaciones */
-@keyframes modalFadeIn {
-    from {
-        opacity: 0;
-        transform: scale(0.8);
-    }
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
-}
-
-@keyframes successBounce {
-    0% {
-        opacity: 0;
-        transform: translate(-50%, -50%) scale(0.5);
-    }
-    50% {
-        transform: translate(-50%, -50%) scale(1.1);
-    }
-    100% {
-        opacity: 1;
-        transform: translate(-50%, -50%) scale(1);
-    }
-}
-
-@keyframes checkPulse {
-    0%, 100% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(1.2);
-    }
-}
-
-/* Responsive para los nuevos modales */
-@media (max-width: 768px) {
-    .modal-content-gallery {
-        width: 98%;
-        height: 95vh;
-        margin: 1% auto;
-    }
-    
-    .modal-header {
-        padding: 20px;
-    }
-    
-    .modal-header h2 {
-        font-size: 2rem;
-    }
-    
-    .modal-gallery-grid {
-        grid-template-columns: 1fr;
-        padding: 20px;
-    }
-    
-    .success-content {
-        padding: 30px 20px;
-        margin: 0 20px;
-    }
-    
-    .success-content h3 {
-        font-size: 1.5rem;
-    }
-}
-
     </style>
 </head>
 <body>
@@ -1319,26 +691,22 @@
     <header class="header">
         <nav class="nav-container">
             <a href="#" class="logo">
-                <img src="img/logo.PNG">
+                <img src="img/logo.PNG" alt="Logo Fotografías Jocker">
             </a>
             
             <div class="nav-menu">
-                <div class="services-dropdown">
-                    <div class="hamburger-menu">
-                        <div class="hamburger-line"></div>
-                        <div class="hamburger-line"></div>
-                        <div class="hamburger-line"></div>
-                    </div>
-                    
-                    <div class="dropdown-menu">
-                        <button class="close-menu"></button>
-                        <a href="#home">Home</a>
-                        <a href="#portfolio">Portfolio</a>
-                        <a href="#retratos">Retratos</a>
-                        <a href="#precios">Blog</a>
-                        <a href="#sobre-nosotros">Sobre Nosotros</a>
-                        <a href="#contacto">Contacto</a>
-                    </div>
+                <div class="hamburger-menu">
+                    <div class="hamburger-line"></div>
+                    <div class="hamburger-line"></div>
+                    <div class="hamburger-line"></div>
+                </div>
+                
+                <div class="dropdown-menu">
+                    <a href="#home">Home</a>
+                    <a href="#portfolio">Portfolio</a>
+                    <a href="#precios">FAQ</a>
+                    <a href="#sobre-nosotros">Sobre Nosotros</a>
+                    <a href="#contacto">Contacto</a>
                 </div>
             </div>
         </nav>
@@ -1346,36 +714,28 @@
 
     <!-- Home Section -->
     <div id="home">
-        <!-- Carrusel -->
         <div class="carousel-container">
-            <!-- Slide 1 -->
             <div class="carousel-slide active">
                 <div class="slide-content">
                     <h1 class="slide-title">Capturamos Tu Historia</h1>
                     <p class="slide-subtitle">Fotografía profesional que trasciende el tiempo</p>
-                    <br>
                 </div>
             </div>
 
-            <!-- Slide 2 -->
             <div class="carousel-slide">
                 <div class="slide-content">
                     <h1 class="slide-title">Momentos Únicos</h1>
                     <p class="slide-subtitle">Cada imagen cuenta una historia especial</p>
-                   <br>
                 </div>
             </div>
 
-            <!-- Slide 3 -->
             <div class="carousel-slide">
                 <div class="slide-content">
                     <h1 class="slide-title">Arte Visual</h1>
                     <p class="slide-subtitle">Creatividad y técnica en perfecta armonía</p>
-                    <br>
                 </div>
             </div>
 
-            <!-- Indicadores del carrusel -->
             <div class="carousel-indicators">
                 <span class="indicator active" data-slide="0"></span>
                 <span class="indicator" data-slide="1"></span>
@@ -1383,7 +743,6 @@
             </div>
         </div>
 
-        <!-- Main Content Section -->
         <section class="content-section">
             <div class="container">
                 <h2 class="section-title">Nuestra Pasión por la Fotografía</h2>
@@ -1400,169 +759,101 @@
                 </div>
             </div>
         </section>
-<section class="gallery-section">
-    <div class="container">
-        <h2 class="section-title">Galería de Trabajos</h2>
-        
-        <div class="photo-grid">
-            <!-- BODAS -->
-            <div class="category-item" data-category="bodas">
-                <img src="img/foto1.png" alt="Bodas">
-                <div class="category-overlay">
-                    <div class="category-info">
-                        <h3>BODAS</h3>
-                        <p>8 fotos</p>
-                        <i class="fas fa-images"></i>
-                    </div>
-                </div>
-            </div>
 
-            <!-- EVENTOS TEMÁTICOS -->
-            <div class="category-item" data-category="eventos">
-                <img src="img/foto2.png" alt="Eventos Temáticos">
-                <div class="category-overlay">
-                    <div class="category-info">
-                        <h3>EVENTOS TEMÁTICOS</h3>
-                        <p>8 fotos</p>
-                        <i class="fas fa-images"></i>
+        <section class="gallery-section">
+            <div class="container">
+                <h2 class="section-title">Galería de Trabajos</h2>
+                
+                <div class="photo-grid">
+                    <div class="category-item">
+                        <img src="img/foto1.png" alt="Bodas">
+                        <div class="category-overlay">
+                            <div class="category-info">
+                                <h3>BODAS</h3>
+                                <p>Momentos únicos</p>
+                                <i class="fas fa-images"></i>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
 
-            <!-- GRADUACIONES -->
-            <div class="category-item" data-category="graduaciones">
-                <img src="img/foto4.png" alt="Graduaciones">
-                <div class="category-overlay">
-                    <div class="category-info">
-                        <h3>GRADUACIONES</h3>
-                        <p>8 fotos</p>
-                        <i class="fas fa-images"></i>
+                    <div class="category-item">
+                        <img src="img/foto2.png" alt="Eventos Temáticos">
+                        <div class="category-overlay">
+                            <div class="category-info">
+                                <h3>EVENTOS TEMÁTICOS</h3>
+                                <p>Celebraciones especiales</p>
+                                <i class="fas fa-images"></i>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
 
-            <!-- FOTOS STUDIO -->
-            <div class="category-item" data-category="studio">
-                <img src="img/foto5.png" alt="Fotos Studio">
-                <div class="category-overlay">
-                    <div class="category-info">
-                        <h3>FOTOS STUDIO</h3>
-                        <p>8 fotos</p>
-                        <i class="fas fa-images"></i>
+                    <div class="category-item">
+                        <img src="img/foto4.png" alt="Graduaciones">
+                        <div class="category-overlay">
+                            <div class="category-info">
+                                <h3>GRADUACIONES</h3>
+                                <p>Logros importantes</p>
+                                <i class="fas fa-images"></i>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
 
-            <!-- RETRATOS -->
-            <div class="category-item" data-category="retratos">
-                <img src="img/foto6.png" alt="Retratos">
-                <div class="category-overlay">
-                    <div class="category-info">
-                        <h3>RETRATOS</h3>
-                        <p>8 fotos</p>
-                        <i class="fas fa-images"></i>
+                    <div class="category-item">
+                        <img src="img/foto5.png" alt="Fotos Studio">
+                        <div class="category-overlay">
+                            <div class="category-info">
+                                <h3>FOTOS STUDIO</h3>
+                                <p>Sesiones profesionales</p>
+                                <i class="fas fa-images"></i>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
 
-            <!-- CORPORATIVO -->
-            <div class="category-item" data-category="corporativo">
-                <img src="img/foto7.png" alt="Corporativo">
-                <div class="category-overlay">
-                    <div class="category-info">
-                        <h3>CORPORATIVO</h3>
-                        <p>8 fotos</p>
-                        <i class="fas fa-images"></i>
+                    <div class="category-item">
+                        <img src="img/foto6.png" alt="Retratos">
+                        <div class="category-overlay">
+                            <div class="category-info">
+                                <h3>RETRATOS</h3>
+                                <p>Personalidad única</p>
+                                <i class="fas fa-images"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="category-item">
+                        <img src="img/foto7.png" alt="Corporativo">
+                        <div class="category-overlay">
+                            <div class="category-info">
+                                <h3>CORPORATIVO</h3>
+                                <p>Imagen profesional</p>
+                                <i class="fas fa-images"></i>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
     </div>
-</section>
-
-<!-- Modal para mostrar galería de categoría -->
-<div id="category-modal" class="category-modal">
-    <div class="modal-content-gallery">
-        <div class="modal-header">
-            <h2 id="modal-title"></h2>
-            <span class="modal-close">&times;</span>
-        </div>
-        <div class="modal-gallery-grid" id="modal-gallery">
-            <!-- Las fotos se cargarán aquí dinámicamente -->
-        </div>
-    </div>
-</div>
-
-<!-- Modal para foto individual -->
-<div id="photo-modal" class="photo-modal">
-    <span class="photo-modal-close">&times;</span>
-    <div class="photo-modal-content">
-        <img id="modal-photo" src="" alt="">
-        <div class="photo-nav">
-            <button id="prev-photo" class="nav-btn">&larr;</button>
-            <button id="next-photo" class="nav-btn">&rarr;</button>
-        </div>
-    </div>
-</div>
-
-<!-- Modal de éxito para el formulario -->
-<div id="success-modal" class="success-modal">
-    <div class="success-content">
-        <div class="success-icon">
-            <i class="fas fa-check-circle"></i>
-        </div>
-        <h3>¡Mensaje Enviado!</h3>
-        <p>Gracias por contactarnos. Te responderemos pronto.</p>
-        <button id="close-success" class="success-btn">Cerrar</button>
-    </div>
-</div>
-
 
     <!-- Portfolio Section -->
-   <section id="portfolio">
-  <div class="container">
-    <h2 class="section-title">Mi Historia</h2>
-    <div class="portfolio-content">
-      
-      <!-- Columna izquierda: texto -->
-      <div class="portfolio-text">
-        <p id="historia"></p>
-      </div>
-
-      <!-- Columna derecha: imagen -->
-      <div class="portfolio-image">
-        <img src="img/foto1.png" alt="Fotógrafo Jocker">
-      </div>
-
-    </div>
-  </div>
-
-    <!-- Retratos Section -->
-    <section id="retratos">
+    <section id="portfolio">
         <div class="container">
-            <h2 class="section-title">Retratos</h2>
-            <p class="content-text" style="text-align: center; max-width: 800px; margin: 0 auto 50px;">
-                Nuestras sesiones de retrato capturan la esencia única de cada persona. Ya sea para uso profesional, personal o artístico, creamos imágenes que reflejan tu verdadero ser.
-            </p>
-            
-            <div class="retratos-gallery">
-                <div class="photo-item" data-src="img/foto1.png">
-                    <img src="img/foto1.png" alt="Retrato 1">
+            <h2 class="section-title">Mi Historia</h2>
+            <div class="portfolio-content">
+                <div class="portfolio-text">
+                    <p id="historia"></p>
                 </div>
-                <div class="photo-item" data-src="img/foto2.png">
-                    <img src="img/foto2.png" alt="Retrato 2">
-                </div>
-                <div class="photo-item" data-src="img/foto4.png">
-                    <img src="img/foto4.png" alt="Retrato 3">
+                <div class="portfolio-image">
+                    <img src="img/foto1.png" alt="Fotógrafo Jocker">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Blog Section -->
+    <!-- FAQ Section -->
     <section id="precios">
         <div class="container">
-            <h2 class="section-title">Blog & Preguntas Frecuentes</h2>
+            <h2 class="section-title">Preguntas Frecuentes</h2>
             
             <div class="faq-container">
                 <div class="faq-item">
@@ -1605,8 +896,9 @@
                     </div>
                 </div>
             </div>
-    <br>      
-<br>
+        </div>
+    </section>
+
     <!-- Sobre Nosotros Section -->
     <section id="sobre-nosotros">
         <div class="container">
@@ -1621,8 +913,6 @@
                     <p>Nuestra filosofía se basa en la creencia de que cada momento es único y merece ser preservado con la más alta calidad artística y técnica. Nos especializamos en bodas, eventos sociales, retratos y fotografía corporativa.</p>
                     <br>
                     <p>Utilizamos equipos de última generación y técnicas innovadoras para garantizar que cada imagen cuente una historia y transmita emociones genuinas. Nos enorgullece crear no solo fotografías, sino obras de arte que nuestros clientes atesorarán por siempre.</p>
-                    <br>
-                    <p>Más allá de la fotografía, estamos comprometidos con brindar una experiencia excepcional a cada cliente, desde la planificación inicial hasta la entrega final del trabajo.</p>
                 </div>
             </div>
         </div>
@@ -1631,50 +921,33 @@
     <!-- Contacto Section -->
     <section id="contacto">
         <div class="container">
-            <h2 class="section-title">Contiza con nosotros</h2>
-            <div class="contact-container">
-                <div class="contact-info">
-                    <div class="contact-item">
-                       <br>
-                       
-                    
-                  
-                    </div>
-                    
-                    
-                    
+            <h2 class="section-title">Cotiza con nosotros</h2>
             
+            <div class="contact-form">
+                <h3 style="margin-bottom: 20px;">Solicita información</h3>
+                <form id="form-contacto">
+                    <div class="form-group">
+                        <label for="nombre">Nombre y apellido</label>
+                        <input type="text" id="nombre" name="nombre" class="form-control" required>
                     </div>
-                </div>
-                <br>
-                
-              <div class="contact-form">
-    <h3 style="margin-bottom: 20px;">Solicita información</h3>
-    <form id="form-contacto">
-        <div class="form-group">
-            <label for="nombre">Nombre y apellido</label>
-            <input type="text" id="nombre" name="nombre" class="form-control" required>
-        </div>
-       
-        <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" class="form-control" required>
-        </div>
-       
-        <div class="form-group">
-            <label for="telefono">Teléfono</label>
-            <input type="tel" id="telefono" name="telefono" class="form-control" required>
-        </div>
-       
-       
-        <div class="form-group">
-            <label for="mensaje">Mensaje</label>
-            <textarea id="mensaje" name="mensaje" class="form-control" rows="4" placeholder="Cuéntame sobre tu evento, fechas, ubicación y cualquier detalle importante..." required></textarea>
-        </div>
-       
-        <button type="submit" class="submit-btn">Enviar mensaje</button>
-    </form>
-</div>
+                   
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" class="form-control" required>
+                    </div>
+                   
+                    <div class="form-group">
+                        <label for="telefono">Teléfono</label>
+                        <input type="tel" id="telefono" name="telefono" class="form-control" required>
+                    </div>
+                   
+                    <div class="form-group">
+                        <label for="mensaje">Mensaje</label>
+                        <textarea id="mensaje" name="mensaje" class="form-control" rows="4" placeholder="Cuéntame sobre tu evento, fechas, ubicación y cualquier detalle importante..." required></textarea>
+                    </div>
+                   
+                    <button type="submit" class="submit-btn">Enviar mensaje</button>
+                </form>
             </div>
         </div>
     </section>
@@ -1687,8 +960,6 @@
                 <p>Capturamos los momentos más importantes de tu vida con arte y profesionalismo.</p>
                 <p>Con años de experiencia, garantizamos recuerdos que perdurarán para siempre.</p>
             </div>
-            
-           
             
             <div class="footer-column">
                 <h3>Contacto</h3>
@@ -1708,19 +979,17 @@
         </div>
     </footer>
 
-    <!-- Modal para imágenes -->
-    <div id="imageModal" class="modal">
-        <span class="close-modal">&times;</span>
-        <img class="modal-content" id="modalImage">
-    </div>
-
     <script>
+        // Configuración EmailJS
+        (function(){
+            emailjs.init("CXHNTY3Ynj17YVEYo");
+        })();
+
         // Mobile Menu Management
         class MobileMenu {
             constructor() {
                 this.hamburger = document.querySelector('.hamburger-menu');
                 this.dropdownMenu = document.querySelector('.dropdown-menu');
-                this.closeButton = document.querySelector('.close-menu');
                 this.init();
             }
 
@@ -1733,11 +1002,6 @@
                     this.toggleMenu();
                 });
 
-                this.closeButton.addEventListener('click', () => {
-                    this.closeMenu();
-                });
-
-                // Close menu when clicking on a link
                 this.dropdownMenu.querySelectorAll('a').forEach(link => {
                     link.addEventListener('click', () => {
                         this.closeMenu();
@@ -1749,7 +1013,6 @@
                 this.hamburger.classList.toggle('active');
                 this.dropdownMenu.classList.toggle('active');
                 
-                // Prevent body scroll when menu is open
                 if (this.dropdownMenu.classList.contains('active')) {
                     document.body.style.overflow = 'hidden';
                 } else {
@@ -1787,21 +1050,17 @@
                     });
                 });
 
-                // Pause on hover
                 const carouselContainer = document.querySelector('.carousel-container');
                 carouselContainer.addEventListener('mouseenter', () => this.pauseAutoSlide());
                 carouselContainer.addEventListener('mouseleave', () => this.startAutoSlide());
             }
 
             goToSlide(slideIndex) {
-                // Remove active classes
                 this.slides[this.currentSlide].classList.remove('active');
                 this.indicators[this.currentSlide].classList.remove('active');
 
-                // Update current slide
                 this.currentSlide = slideIndex;
 
-                // Add active classes
                 this.slides[this.currentSlide].classList.add('active');
                 this.indicators[this.currentSlide].classList.add('active');
             }
@@ -1850,79 +1109,78 @@
                 const question = item.querySelector('.faq-question');
                 
                 question.addEventListener('click', () => {
-                    // Close all other items
                     faqItems.forEach(otherItem => {
                         if (otherItem !== item) {
                             otherItem.classList.remove('active');
                         }
                     });
                     
-                    // Toggle current item
                     item.classList.toggle('active');
                 });
             });
         }
 
-        // Image Modal
-        function setupImageModal() {
-            const modal = document.getElementById('imageModal');
-            const modalImg = document.getElementById('modalImage');
-            const closeModal = document.querySelector('.close-modal');
-            const photoItems = document.querySelectorAll('.photo-item');
+        // Función para enviar email
+        function sendContactForm() {
+            const form = document.getElementById('form-contacto');
             
-            // Open modal when clicking on photo
-            photoItems.forEach(item => {
-                item.addEventListener('click', () => {
-                    modal.style.display = 'flex';
-                    modalImg.src = item.getAttribute('data-src');
+            const templateParams = {
+                nombre: document.getElementById('nombre').value,
+                email: document.getElementById('email').value,
+                telefono: document.getElementById('telefono').value,
+                mensaje: document.getElementById('mensaje').value,
+                fecha: new Date().toLocaleDateString('es-ES')
+            };
+
+            const submitBtn = form.querySelector('.submit-btn');
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'Enviando...';
+            submitBtn.disabled = true;
+
+            emailjs.send('service_c1akkes', 'template_bmf2dy4', templateParams)
+                .then(function(response) {
+                    alert('¡Mensaje enviado correctamente! Te contactaré pronto.');
+                    form.reset();
+                }, function(error) {
+                    alert('Error al enviar el mensaje. Por favor inténtalo de nuevo.');
+                })
+                .finally(function() {
+                    submitBtn.textContent = originalText;
+                    submitBtn.disabled = false;
                 });
-            });
-            
-            // Close modal
-            closeModal.addEventListener('click', () => {
-                modal.style.display = 'none';
-            });
-            
-            // Close modal when clicking outside the image
-            window.addEventListener('click', (e) => {
-                if (e.target === modal) {
-                    modal.style.display = 'none';
-                }
-            });
         }
 
-    
+        // Efecto de escritura para la historia
+        function setupTypingEffect() {
+            const textos = [
+                "Mi nombre es Jocker y soy el fotógrafo principal detrás de Fotografías Jocker. Mi viaje en la fotografía comenzó hace más de 10 años cuando recibí mi primera cámara como regalo de cumpleaños.",
+                "Desde entonces, he dedicado mi vida a capturar momentos especiales para las personas. He tenido el privilegio de fotografiar más de 200 bodas, 50 eventos corporativos y incontables sesiones de retratos.",
+                "Mi enfoque se centra en crear imágenes auténticas que capturen la esencia de cada momento. Creo que la mejor fotografía es aquella que cuenta una historia y evoca emociones genuinas.",
+                "Cuando no estoy detrás de la cámara, me gusta viajar, explorar nuevas técnicas fotográficas y compartir mis conocimientos con aspirantes a fotógrafos."
+            ];
 
-  const textos = [
-    "Mi nombre es Jocker y soy el fotógrafo principal detrás de Fotografías Jocker. Mi viaje en la fotografía comenzó hace más de 10 años cuando recibí mi primera cámara como regalo de cumpleaños.",
-    "Desde entonces, he dedicado mi vida a capturar momentos especiales para las personas. He tenido el privilegio de fotografiar más de 200 bodas, 50 eventos corporativos y incontables sesiones de retratos.",
-    "Mi enfoque se centra en crear imágenes auténticas que capturen la esencia de cada momento. Creo que la mejor fotografía es aquella que cuenta una historia y evoca emociones genuinas.",
-    "Cuando no estoy detrás de la cámara, me gusta viajar, explorar nuevas técnicas fotográficas y compartir mis conocimientos con aspirantes a fotógrafos a través de talleres y mentorías."
-  ];
+            let i = 0;
+            let j = 0;
+            const velocidad = 70;
 
-  let i = 0;   // índice del carácter
-  let j = 0;   // índice del párrafo
-  const velocidad = 70; // milisegundos por letra
+            function escribir() {
+                if (j < textos.length) {
+                    const parrafo = document.getElementById("historia");
 
-  function escribir() {
-    if (j < textos.length) {
-      const parrafo = document.getElementById("historia");
+                    if (i < textos[j].length) {
+                        parrafo.innerHTML = textos.slice(0, j).join("<br><br>") + "<br><br>" + textos[j].substring(0, i+1);
+                        i++;
+                        setTimeout(escribir, velocidad);
+                    } else {
+                        i = 0;
+                        j++;
+                        setTimeout(escribir, 800);
+                    }
+                }
+            }
 
-      if (i < textos[j].length) {
-        parrafo.innerHTML = textos.slice(0, j).join("<br><br>") + "<br><br>" + textos[j].substring(0, i+1);
-        i++;
-        setTimeout(escribir, velocidad);
-      } else {
-        i = 0;
-        j++;
-        setTimeout(escribir, 800); // pequeña pausa entre párrafos
-      }
-    }
-  }
-
-  escribir();
-
-      
+            escribir();
+        }
 
         // Initialize everything when DOM is loaded
         document.addEventListener('DOMContentLoaded', () => {
@@ -1930,10 +1188,16 @@
             new PhotoCarousel();
             setupScrollEffects();
             setupFAQAccordion();
-            setupImageModal();
-            setupFormValidation();
+            setupTypingEffect();
 
-            // Add smooth scrolling for navigation links
+            // Form submission
+            const form = document.getElementById('form-contacto');
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                sendContactForm();
+            });
+
+            // Smooth scrolling
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
                     e.preventDefault();
@@ -1947,352 +1211,7 @@
                 });
             });
         });
-        // Configuración EmailJS
-// Configuración EmailJS
-(function(){
-    emailjs.init("CXHNTY3Ynj17YVEYo"); // Reemplaza con tu PUBLIC_KEY de EmailJS
-})();
-
-// Función para enviar email adaptada a tu formulario
-function sendContactForm() {
-    const form = document.getElementById('form-contacto');
-    
-    // Obtener valores del formulario
-    const nombre = document.getElementById('nombre').value;
-    const email = document.getElementById('email').value;
-    const telefono = document.getElementById('telefono').value;
-    const mensaje = document.getElementById('mensaje').value;
-    
-    const templateParams = {
-        nombre: nombre,
-        email: email,
-        telefono: telefono,
-        mensaje: mensaje,
-        fecha: new Date().toLocaleDateString('es-ES')
-    };
-
-    // Mostrar loading en el botón
-    const submitBtn = form.querySelector('.submit-btn');
-    const originalText = submitBtn.textContent;
-    submitBtn.textContent = 'Enviando...';
-    submitBtn.disabled = true;
-
-    // Enviar email
-    emailjs.send('service_c1akkes', 'template_bmf2dy4', templateParams)
-        .then(function(response) {
-            console.log('SUCCESS!', response.status, response.text);
-            
-            // Mostrar mensaje de éxito
-            alert('¡Mensaje enviado correctamente! Te contactaré pronto para hablar sobre tu ' + plan + '.');
-            
-            // Limpiar formulario
-            form.reset();
-            
-        }, function(error) {
-            console.log('FAILED...', error);
-            alert('Error al enviar el mensaje. Por favor inténtalo de nuevo o contáctame directamente por WhatsApp.');
-        })
-        .finally(function() {
-            // Restaurar botón
-            submitBtn.textContent = originalText;
-            submitBtn.disabled = false;
-        });
-}
-
-// Event listener para el formulario
-document.addEventListener('DOMContentLoaded', function() {
-    const form = document.getElementById('form-contacto');
-    form.addEventListener('submit', function(e) {
-        e.preventDefault();
-        sendContactForm();
-    });
-});
-
-const photoCategories = {
-    bodas: [
-        { src: 'img/foto1.png', alt: 'Boda 1' },
-        { src: 'img/foto2.png', alt: 'Boda 2' },
-        { src: 'img/foto4.png', alt: 'Boda 3' },
-        { src: 'img/foto5.png', alt: 'Boda 4' },
-        { src: 'img/foto6.png', alt: 'Boda 5' },
-        { src: 'img/foto7.png', alt: 'Boda 6' },
-         { src: 'img/foto6.png', alt: 'Boda 7' },
-        { src: 'img/foto7.png', alt: 'Boda 8' }
-    ],
-    eventos: [
-        { src: 'img/foto2.png', alt: 'Evento 1' },
-        { src: 'img/foto4.png', alt: 'Evento 2' },
-        { src: 'img/foto5.png', alt: 'Evento 3' },
-        { src: 'img/foto6.png', alt: 'Evento 4' },
-        { src: 'img/foto7.png', alt: 'Evento 5' },
-        { src: 'img/foto8.png', alt: 'Evento 6' },
-        { src: 'img/foto7.png', alt: 'Evento 7' },
-        { src: 'img/foto8.png', alt: 'Evento 8' }
-    ],
-    graduaciones: [
-        { src: 'img/foto4.png', alt: 'Graduación 1' },
-        { src: 'img/foto5.png', alt: 'Graduación 2' },
-        { src: 'img/foto6.png', alt: 'Graduación 3' },
-        { src: 'img/foto7.png', alt: 'Graduación 4' },
-        { src: 'img/foto8.png', alt: 'Graduación 5' },
-        { src: 'img/foto1.png', alt: 'Graduación 6' },
-         { src: 'img/foto8.png', alt: 'Graduación 7' },
-        { src: 'img/foto1.png', alt: 'Graduación 8' }
-    ],
-    studio: [
-        { src: 'img/foto5.png', alt: 'Studio 1' },
-        { src: 'img/foto6.png', alt: 'Studio 2' },
-        { src: 'img/foto7.png', alt: 'Studio 3' },
-        { src: 'img/foto8.png', alt: 'Studio 4' },
-        { src: 'img/foto1.png', alt: 'Studio 5' },
-        { src: 'img/foto2.png', alt: 'Studio 6' },
-        { src: 'img/foto1.png', alt: 'Studio 7' },
-        { src: 'img/foto2.png', alt: 'Studio 8' }
-        
-    ],
-    retratos: [
-        { src: 'img/foto6.png', alt: 'Retrato 1' },
-        { src: 'img/foto7.png', alt: 'Retrato 2' },
-        { src: 'img/foto8.png', alt: 'Retrato 3' },
-        { src: 'img/foto1.png', alt: 'Retrato 4' },
-        { src: 'img/foto2.png', alt: 'Retrato 5' },
-        { src: 'img/foto4.png', alt: 'Retrato 6' },
-        { src: 'img/foto2.png', alt: 'Retrato 7' },
-        { src: 'img/foto4.png', alt: 'Retrato 8' }
-    ],
-    corporativo: [
-        { src: 'img/foto7.png', alt: 'Corporativo 1' },
-        { src: 'img/foto8.png', alt: 'Corporativo 2' },
-        { src: 'img/foto1.png', alt: 'Corporativo 3' },
-        { src: 'img/foto2.png', alt: 'Corporativo 4' },
-        { src: 'img/foto4.png', alt: 'Corporativo 5' },
-        { src: 'img/foto5.png', alt: 'Corporativo 6' },
-        { src: 'img/foto4.png', alt: 'Corporativo 7' },
-        { src: 'img/foto5.png', alt: 'Corporativo 8' }
-    ]
-    
-};
-
-// Gestión de galerías por categoría
-class CategoryGallery {
-    constructor() {
-        this.currentPhotos = [];
-        this.currentIndex = 0;
-        this.init();
-    }
-
-    init() {
-        this.setupEventListeners();
-    }
-
-    setupEventListeners() {
-        // Abrir modal de categoría
-        document.querySelectorAll('.category-item').forEach(item => {
-            item.addEventListener('click', (e) => {
-                const category = e.currentTarget.getAttribute('data-category');
-                this.openCategoryModal(category);
-            });
-        });
-
-        // Cerrar modal de categoría
-        document.querySelector('.modal-close').addEventListener('click', () => {
-            this.closeCategoryModal();
-        });
-
-        // Cerrar modal de foto individual
-        document.querySelector('.photo-modal-close').addEventListener('click', () => {
-            this.closePhotoModal();
-        });
-
-        // Navegación de fotos
-        document.getElementById('prev-photo').addEventListener('click', () => {
-            this.showPrevPhoto();
-        });
-
-        document.getElementById('next-photo').addEventListener('click', () => {
-            this.showNextPhoto();
-        });
-
-        // Cerrar modales al hacer clic fuera
-        window.addEventListener('click', (e) => {
-            if (e.target.id === 'category-modal') {
-                this.closeCategoryModal();
-            }
-            if (e.target.id === 'photo-modal') {
-                this.closePhotoModal();
-            }
-        });
-    }
-
-    openCategoryModal(category) {
-        const modal = document.getElementById('category-modal');
-        const title = document.getElementById('modal-title');
-        const gallery = document.getElementById('modal-gallery');
-
-        // Configurar título
-        const titles = {
-            bodas: 'BODAS',
-            eventos: 'EVENTOS TEMÁTICOS',
-            graduaciones: 'GRADUACIONES',
-            studio: 'FOTOS STUDIO',
-            retratos: 'RETRATOS',
-            corporativo: 'CORPORATIVO'
-        };
-
-        title.textContent = titles[category] || 'GALERÍA';
-
-        // Limpiar galería anterior
-        gallery.innerHTML = '';
-
-        // Cargar fotos de la categoría
-        const photos = photoCategories[category] || [];
-        this.currentPhotos = photos;
-
-        photos.forEach((photo, index) => {
-            const photoItem = document.createElement('div');
-            photoItem.className = 'modal-photo-item';
-            photoItem.innerHTML = `<img src="${photo.src}" alt="${photo.alt}">`;
-            
-            photoItem.addEventListener('click', () => {
-                this.openPhotoModal(index);
-            });
-
-            gallery.appendChild(photoItem);
-        });
-
-        // Mostrar modal
-        modal.style.display = 'block';
-        document.body.style.overflow = 'hidden';
-    }
-
-    closeCategoryModal() {
-        document.getElementById('category-modal').style.display = 'none';
-        document.body.style.overflow = 'auto';
-    }
-
-    openPhotoModal(index) {
-        this.currentIndex = index;
-        const modal = document.getElementById('photo-modal');
-        const img = document.getElementById('modal-photo');
-        
-        img.src = this.currentPhotos[index].src;
-        img.alt = this.currentPhotos[index].alt;
-        
-        modal.style.display = 'block';
-    }
-
-    closePhotoModal() {
-        document.getElementById('photo-modal').style.display = 'none';
-    }
-
-    showPrevPhoto() {
-        this.currentIndex = (this.currentIndex - 1 + this.currentPhotos.length) % this.currentPhotos.length;
-        this.updatePhotoModal();
-    }
-
-    showNextPhoto() {
-        this.currentIndex = (this.currentIndex + 1) % this.currentPhotos.length;
-        this.updatePhotoModal();
-    }
-
-    updatePhotoModal() {
-        const img = document.getElementById('modal-photo');
-        img.src = this.currentPhotos[this.currentIndex].src;
-        img.alt = this.currentPhotos[this.currentIndex].alt;
-    }
-}
-
-// Gestión del modal de éxito
-class SuccessModal {
-    constructor() {
-        this.modal = document.getElementById('success-modal');
-        this.closeBtn = document.getElementById('close-success');
-        this.init();
-    }
-
-    init() {
-        this.closeBtn.addEventListener('click', () => {
-            this.close();
-        });
-
-        window.addEventListener('click', (e) => {
-            if (e.target === this.modal) {
-                this.close();
-            }
-        });
-    }
-
-    show() {
-        this.modal.style.display = 'block';
-        document.body.style.overflow = 'hidden';
-    }
-
-    close() {
-        this.modal.style.display = 'none';
-        document.body.style.overflow = 'auto';
-    }
-}
-
-// Modificar la función de envío de formulario existente
-function sendContactForm() {
-    const form = document.getElementById('form-contacto');
-    
-    // Obtener valores del formulario
-    const nombre = document.getElementById('nombre').value;
-    const email = document.getElementById('email').value;
-    const telefono = document.getElementById('telefono').value;
-    const mensaje = document.getElementById('mensaje').value;
-    
-    const templateParams = {
-        nombre: nombre,
-        email: email,
-        telefono: telefono,
-        mensaje: mensaje,
-        fecha: new Date().toLocaleDateString('es-ES')
-    };
-
-    // Mostrar loading en el botón
-    const submitBtn = form.querySelector('.submit-btn');
-    const originalText = submitBtn.textContent;
-    submitBtn.textContent = 'Enviando...';
-    submitBtn.disabled = true;
-
-    // Enviar email
-    emailjs.send('service_c1akkes', 'template_bmf2dy4', templateParams)
-        .then(function(response) {
-            console.log('SUCCESS!', response.status, response.text);
-            
-            // Mostrar modal de éxito personalizado
-            successModal.show();
-            
-            // Limpiar formulario
-            form.reset();
-            
-        }, function(error) {
-            console.log('FAILED...', error);
-            alert('Error al enviar el mensaje. Por favor inténtalo de nuevo o contáctame directamente por WhatsApp.');
-        })
-        .finally(function() {
-            // Restaurar botón
-            submitBtn.textContent = originalText;
-            submitBtn.disabled = false;
-        });
-}
-
-// Inicializar las nuevas funcionalidades
-let categoryGallery;
-let successModal;
-
-document.addEventListener('DOMContentLoaded', function() {
-    categoryGallery = new CategoryGallery();
-    successModal = new SuccessModal();
-});
     </script>
 </body>
-
 </html>
-
-
-
-
 
