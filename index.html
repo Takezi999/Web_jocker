@@ -703,8 +703,8 @@
                 
                 <div class="dropdown-menu">
                     <a href="#home">Home</a>
-                    <a href="#portfolio">Portfolio</a>
-                    <a href="#precios">FAQ</a>
+                    <a href="#portfolio">Portafolio</a>
+                    <a href="#precios">Preguntas Frecuentes</a>
                     <a href="#sobre-nosotros">Sobre Nosotros</a>
                     <a href="#contacto">Contacto</a>
                 </div>
@@ -1185,6 +1185,105 @@
         // Initialize everything when DOM is loaded
         document.addEventListener('DOMContentLoaded', () => {
             new MobileMenu();
+            new GalleryManager();
+            new PhotoCarousel();
+            setupScrollEffects();
+            setupFAQAccordion();
+            setupTypingEffect();
+
+            // Form submission
+            const form = document.getElementById('form-contacto');
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                sendContactForm();
+            });
+
+            // Smooth scrolling
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>item.classList.toggle('active');
+                });
+            });
+        }
+
+        // Función para enviar email
+        function sendContactForm() {
+            const form = document.getElementById('form-contacto');
+            
+            const templateParams = {
+                nombre: document.getElementById('nombre').value,
+                email: document.getElementById('email').value,
+                telefono: document.getElementById('telefono').value,
+                mensaje: document.getElementById('mensaje').value,
+                fecha: new Date().toLocaleDateString('es-ES')
+            };
+
+            const submitBtn = form.querySelector('.submit-btn');
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'Enviando...';
+            submitBtn.disabled = true;
+
+            emailjs.send('service_c1akkes', 'template_bmf2dy4', templateParams)
+                .then(function(response) {
+                    alert('¡Mensaje enviado correctamente! Te contactaré pronto.');
+                    form.reset();
+                }, function(error) {
+                    alert('Error al enviar el mensaje. Por favor inténtalo de nuevo.');
+                })
+                .finally(function() {
+                    submitBtn.textContent = originalText;
+                    submitBtn.disabled = false;
+                });
+        }
+
+        // Efecto de escritura para la historia
+        function setupTypingEffect() {
+            const textos = [
+                "Mi nombre es Jocker y soy el fotógrafo principal detrás de Fotografías Jocker. Mi viaje en la fotografía comenzó hace más de 10 años cuando recibí mi primera cámara como regalo de cumpleaños.",
+                "Desde entonces, he dedicado mi vida a capturar momentos especiales para las personas. He tenido el privilegio de fotografiar más de 200 bodas, 50 eventos corporativos y incontables sesiones de retratos.",
+                "Mi enfoque se centra en crear imágenes auténticas que capturen la esencia de cada momento. Creo que la mejor fotografía es aquella que cuenta una historia y evoca emociones genuinas.",
+                "Cuando no estoy detrás de la cámara, me gusta viajar, explorar nuevas técnicas fotográficas y compartir mis conocimientos con aspirantes a fotógrafos."
+            ];
+
+            let i = 0;
+            let j = 0;
+            const velocidad = 70;
+
+            function escribir() {
+                if (j < textos.length) {
+                    const parrafo = document.getElementById("historia");
+
+                    if (i < textos[j].length) {
+                        parrafo.innerHTML = textos.slice(0, j).join("<br><br>") + "<br><br>" + textos[j].substring(0, i+1);
+                        i++;
+                        setTimeout(escribir, velocidad);
+                    } else {
+                        i = 0;
+                        j++;
+                        setTimeout(escribir, 800);
+                    }
+                }
+            }
+
+            escribir();
+        }
+
+        // Initialize everything when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            new MobileMenu();
             new PhotoCarousel();
             setupScrollEffects();
             setupFAQAccordion();
@@ -1214,4 +1313,3 @@
     </script>
 </body>
 </html>
-
